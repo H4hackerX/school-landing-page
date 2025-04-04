@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tauheed Public High School | Karachi, Pakistan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #1a4b8e; /* Deep Blue */
+            --secondary-color: #f8f9fa; /* Light Gray */
+            --accent-color: #ffc107;  /* Yellow */
+            --text-color: #343a40; /* Darker Gray for text */
+            --light-text: #6c757d; /* Medium Gray for secondary text */
+            --white: #fff;
+            --gray: #e9ecef; /* Lighter gray border/background */
+            --success-color: #28a745;
+            --error-color: #dc3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Enables smooth scrolling */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7; /* Slightly increased line-height */
+            color: var(--text-color);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            line-height: 1.3; /* Adjusted line-height for headings */
+            font-weight: 600; /* Slightly bolder headings */
+            color: var(--primary-color);
+        }
+
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.2rem; }
+        h3 { font-size: 1.6rem; }
+        h4 { font-size: 1.2rem; }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--light-text); /* Default p color */
+        }
+        .section p { /* Paragraphs within sections */
+             color: var(--text-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #0d3a7a; /* Darker primary */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block; /* Remove bottom space */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1140px; /* Slightly wider container */
+            margin: 0 auto;
+            padding: 0 1rem; /* Adjusted padding */
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem; /* Increased margin */
+            position: relative;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            font-weight: 700; /* Bolder title */
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 0.8rem auto 0; /* Adjusted spacing */
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem; /* Slightly more padding */
+            background: var(--primary-color);
+            color: var(--white);
+            border: 2px solid var(--primary-color); /* Added border */
+            border-radius: 5px; /* Slightly rounder */
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px; /* Subtle letter spacing */
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #0d3a7a;
+            border-color: #0d3a7a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-accent {
+            background: var(--accent-color);
+            color: var(--primary-color); /* Better contrast */
+            border-color: var(--accent-color);
+            font-weight: 700; /* Bolder accent button */
+        }
+
+        .btn-accent:hover {
+            background: #e0a800;
+            border-color: #e0a800;
+            color: var(--primary-color);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Softer shadow */
+            transition: padding 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 0.3rem 0; /* Reduced padding on scroll */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0; /* Adjusted padding */
+            transition: padding 0.3s ease;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 55px; /* Adjusted size */
+            width: auto;
+            margin-right: 1rem;
+        }
+
+        .logo-text h1 {
+            font-size: 1.4rem; /* Adjusted size */
+            color: var(--primary-color);
+            margin-bottom: 0.1rem; /* Reduced margin */
+            line-height: 1.2;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            color: var(--light-text);
+            margin-bottom: 0;
+            line-height: 1.2;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2.2rem; /* Slightly more spacing */
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            font-weight: 600;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+            position: relative;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active-link { /* Style for active link (optional JS needed) */
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; /* Positioned at the bottom */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active-link::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            z-index: 1001; /* Ensure it's above nav links when open */
+        }
+
+        .hamburger div {
+            width: 28px; /* Slightly larger */
+            height: 3px;
+            background: var(--primary-color);
+            margin: 5px;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 600px; /* Minimum height */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url('gpt.png') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px; /* Account for fixed header */
+        }
+
+        .hero-content {
+            max-width: 850px; /* Wider content */
+            margin: 0 auto;
+            animation: fadeInDown 1s ease-out; /* Simple intro animation */
+        }
+
+        .hero h1 {
+            font-size: 3.2rem; /* Adjusted size */
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            color: var(--white); /* Override default h1 color */
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.4rem; /* Adjusted size */
+            margin-bottom: 2.5rem;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+            color: var(--gray); /* Lighter text for subtitle */
+            font-weight: 400;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem; /* More gap */
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* About Section */
+        .about {
+            background: var(--secondary-color);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-text {
+            flex: 1.1; /* Give text slightly more space */
+        }
+
+        .about-text h2 { /* Target the h2 within about-text */
+             text-align: left;
+             margin-bottom: 1.5rem;
+        }
+        .about-text h2::after { /* Adjust title underline */
+            margin: 0.8rem 0 0; /* Align left */
+        }
+
+        .founder-section {
+            flex: 0.9; /* Keep the flex sizing from original .about-img */
+            text-align: center; /* Center the title, image, and name */
+            padding: 1.5rem 1rem; /* Add some padding */
+            display: flex; /* Use flexbox for vertical alignment */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
+            justify-content: center; /* Center items vertically */
+            background-color: var(--white); /* Give it a background if needed */
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            /* Remove overflow: hidden if it clips text, or adjust padding */
+            /* overflow: hidden; */ /* Commented out, might not be needed now */
+        }
+
+        .founder-title {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .founder-photo {
+            width: 280px; /* Control image size */
+            height: 280px; /* Make it square for the circle */
+            object-fit: cover; /* Ensure image covers the area */
+            border-radius: 50%; /* Circular image */
+            margin-bottom: 1.2rem; /* Space below image */
+            border: 5px solid var(--white); /* Optional: White border */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Shadow for depth */
+            display: block; /* Ensure margins work correctly */
+        }
+
+        .founder-name {
+            font-size: 1.4rem; /* Prominent name */
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 0.2rem; /* Less space below name */
+        }
+
+        .founder-quote { /* Optional styling for quote */
+            font-size: 0.9rem;
+            color: var(--light-text);
+            font-style: italic;
+            margin-top: 0.5rem;
+            max-width: 80%;
+        }
+
+        /* Ensure it still works within the flex layout of about-content */
+        .about-content {
+            display: flex;
+            align-items: center; /* Vertically center the text and founder sections */
+            gap: 3rem;
+        }
+
+        /* Responsive Adjustments for Founder Section */
+        @media screen and (max-width: 992px) {
+            .about-content {
+                flex-direction: column-reverse; /* Put founder image above text on mobile */
+            }
+            .founder-section {
+                flex: none; /* Reset flex sizing */
+                width: 80%; /* Control width */
+                max-width: 300px; /* Max width */
+                margin-bottom: 2rem; /* Add space below when stacked */
+            }
+        }
+        @media screen and (max-width: 576px) {
+            .founder-photo {
+                width: 150px;
+                height: 150px;
+            }
+            .founder-name {
+                font-size: 1.2rem;
+            }
+        }
+
+        .highlights {
+            display: grid; /* Use grid for better control */
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive columns */
+            gap: 1.5rem; /* Gap between items */
+            margin-top: 3rem;
+        }
+
+        .highlight-item {
+            text-align: center;
+            padding: 1.5rem 1rem; /* Adjusted padding */
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .highlight-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .highlight-item i {
+            font-size: 2.2rem; /* Slightly smaller icons */
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            display: inline-block; /* Needed for transforms if added */
+        }
+
+        .highlight-item h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem; /* Reduced margin */
+            font-weight: 700;
+        }
+
+        .highlight-item p {
+            color: var(--light-text);
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Programs Section */
+        .programs {
+            background: var(--white);
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust minmax */
+            gap: 2.5rem; /* Increased gap */
+        }
+
+        .program-card {
+            background: var(--secondary-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07); /* Softer shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex; /* Use flex for better structure */
+            flex-direction: column;
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px); /* Slightly less lift */
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12); /* Enhanced shadow */
+        }
+
+        .program-img {
+            height: 220px; /* Increased height */
+            overflow: hidden;
+        }
+
+        .program-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .program-card:hover .program-img img {
+            transform: scale(1.05); /* Subtle scale */
+        }
+
+        .program-info {
+            padding: 1.8rem; /* Increased padding */
+            flex-grow: 1; /* Allow info to grow */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .program-info h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem; /* Adjusted size */
+            margin-bottom: 0.8rem;
+        }
+        .program-info p {
+            margin-bottom: 1.5rem; /* More space before button */
+            flex-grow: 1; /* Push button down */
+             color: var(--text-color);
+        }
+        .program-info .btn {
+             margin-top: auto; /* Pushes button to bottom */
+             align-self: flex-start; /* Align button left */
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: var(--secondary-color);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem; /* Increased gap */
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 250px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer; /* Indicate clickable */
+            transition: box-shadow 0.3s ease;
+        }
+         .gallery-item:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08); /* Slightly more scale */
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 75, 142, 0.7); /* Primary color overlay */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: var(--white);
+            font-size: 2.5rem; /* Larger icon */
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover .gallery-overlay i {
+             transform: scale(1);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85); /* Darker overlay */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000; /* High z-index */
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.4s ease; /* Zoom animation */
+        }
+         @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 85vh; /* Limit image height */
+            display: block;
+            border-radius: 5px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: -45px; /* Further up */
+            right: -10px; /* Slightly offset */
+            color: var(--white);
+            font-size: 2.5rem; /* Larger close button */
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            line-height: 1; /* Ensure consistent spacing */
+        }
+        .close-lightbox:hover {
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: calc(100% + 100px); /* Wider nav area */
+            left: -50px; /* Offset nav area */
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            pointer-events: none; /* Allow clicks through transparent area */
+        }
+
+        .lightbox-nav button {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            pointer-events: all; /* Enable clicks on buttons */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-nav button:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--white);
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            gap: 3rem;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px; /* Minimum width before wrapping */
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-details {
+            margin-bottom: 2.5rem; /* More space */
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.4rem; /* Slightly smaller icon */
+            color: var(--primary-color);
+            margin-right: 1.2rem; /* More space */
+            margin-top: 0.2rem; /* Adjust alignment */
+            width: 25px; /* Fixed width for alignment */
+            text-align: center;
+        }
+
+        .contact-text h4 {
+            font-size: 1.1rem; /* Adjusted size */
+            margin-bottom: 0.3rem;
+            color: var(--text-color); /* Use standard text color */
+            font-weight: 600;
+        }
+
+        .contact-text p, .contact-text a {
+            color: var(--light-text);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .contact-text a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem; /* Add margin to separate */
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px; /* Larger icons */
+            height: 45px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            color: var(--primary-color); /* Better contrast */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form {
+            flex: 1.2; /* Give form slightly more space */
+            min-width: 300px;
+            background: var(--secondary-color);
+            padding: 2.5rem; /* More padding */
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+        }
+         .contact-form h3 {
+             margin-bottom: 2rem; /* More space below heading */
+         }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem; /* More space */
+            font-weight: 600;
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.9rem 1rem; /* More padding */
+            border: 1px solid var(--gray);
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: var(--white); /* Ensure white background */
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(26, 75, 142, 0.15); /* Focus ring */
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Form Message Area */
+        #form-message {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            border-radius: 5px;
+            font-size: 0.95rem;
+            display: none; /* Hidden by default */
+        }
+        #form-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        #form-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        .map-container {
+            margin-top: 3rem;
+            height: 350px; /* Taller map */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--gray); /* Subtle border */
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--secondary-color); /* Use light gray for contrast */
+            padding: 4rem 0 1.5rem; /* More padding top */
+        }
+
+        .footer-content {
+            display: grid;
+             /* Responsive grid columns */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem; /* More space */
+        }
+
+        .footer-column h3 {
+            font-size: 1.4rem; /* Adjusted size */
+            margin-bottom: 1.8rem; /* More space */
+            position: relative;
+            color: var(--white); /* White heading */
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        .footer-column p { /* Footer paragraphs */
+             color: var(--gray);
+             line-height: 1.7;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.9rem; /* More spacing */
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 8px; /* Indent on hover */
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .footer-contact i {
+            margin-right: 1rem;
+            margin-top: 0.3rem;
+            width: 18px; /* Align icons */
+            text-align: center;
+            color: var(--accent-color); /* Accent color for icons */
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15); /* Slightly more visible border */
+            margin-top: 1rem; /* Add margin top */
+        }
+
+        .footer-bottom p {
+            margin-bottom: 0;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        /* Footer Social Links (reuse style) */
+        .footer-column .social-links a {
+             background: var(--white);
+             color: var(--primary-color);
+             width: 40px;
+             height: 40px;
+             font-size: 1rem;
+        }
+        .footer-column .social-links a:hover {
+             background: var(--accent-color);
+             color: var(--primary-color);
+             transform: translateY(-2px);
+             box-shadow: none;
+        }
+
+
+        /* Responsive Styles */
+        @media screen and (max-width: 992px) {
+             h1 { font-size: 2.5rem; }
+             .hero h1 { font-size: 2.8rem; }
+             .hero p { font-size: 1.2rem; }
+
+             .about-content {
+                 flex-direction: column;
+                 gap: 2rem;
+             }
+             .about-img { margin-top: 2rem; }
+
+             .contact-container { gap: 2rem; }
+             .contact-form { padding: 2rem; }
+
+             .footer-content { gap: 2rem; }
+        }
+
+        @media screen and (max-width: 768px) {
+            .container { padding: 0 1.5rem; }
+
+            .navbar { padding: 1rem 0; }
+
+            .nav-links {
+                position: fixed; /* Use fixed for better overlay */
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh; /* Full height */
+                background: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center; /* Center links vertically */
+                padding: 2rem 0;
+                clip-path: circle(0px at calc(100% - 40px) 40px); /* Animate from hamburger */
+                transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1); /* Smoother easing */
+                pointer-events: none;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                z-index: 999; /* Below header */
+            }
+
+            .nav-links.active {
+                clip-path: circle(150% at calc(100% - 40px) 40px); /* Ensure full coverage */
+                pointer-events: all;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0; /* More vertical spacing */
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+             .nav-links.active li {
+                 opacity: 1;
+                 transform: translateY(0);
+                 transition-delay: 0.3s; /* Delay appearance */
+             }
+             /* Stagger link appearance */
+            .nav-links.active li:nth-child(2) { transition-delay: 0.35s; }
+            .nav-links.active li:nth-child(3) { transition-delay: 0.4s; }
+            .nav-links.active li:nth-child(4) { transition-delay: 0.45s; }
+            .nav-links.active li:nth-child(5) { transition-delay: 0.5s; }
+
+
+            .nav-links a { font-size: 1.2rem; } /* Larger links */
+
+            .hamburger { display: block; }
+
+            /* Active Hamburger Animation (X shape) */
+            .hamburger.active div:nth-child(1) {
+                transform: rotate(-45deg) translate(-6px, 7px);
+            }
+            .hamburger.active div:nth-child(2) {
+                opacity: 0;
+                 transform: scale(0.1); /* Make it disappear smoothly */
+            }
+            .hamburger.active div:nth-child(3) {
+                transform: rotate(45deg) translate(-6px, -7px);
+            }
+
+            .hero h1 { font-size: 2.4rem; }
+            .hero p { font-size: 1.1rem; }
+
+            .hero-btns {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center; /* Center buttons */
+            }
+            .hero-btns .btn { width: 80%; max-width: 300px; } /* Limit button width */
+
+            .section { padding: 4rem 0; }
+            .section-title { font-size: 2rem; margin-bottom: 3rem; }
+
+            .programs-grid { grid-template-columns: 1fr; } /* Single column */
+            .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+
+             .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+             }
+        }
+
+        @media screen and (max-width: 576px) {
+             .container { padding: 0 1rem; }
+            .logo img { height: 45px; margin-right: 0.5rem;}
+            .logo-text h1 { font-size: 1.1rem; }
+            .logo-text p { font-size: 0.7rem; }
+
+            .hero { min-height: 500px; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+
+            .highlights { grid-template-columns: 1fr; gap: 1rem; } /* Stack highlights */
+            .highlight-item { min-width: unset; }
+
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; } /* 2 columns */
+            .gallery-item { height: 180px; }
+
+            .contact-form { padding: 1.5rem; }
+            .map-container { height: 250px; }
+
+            .footer-content {
+                 grid-template-columns: 1fr; /* Stack footer columns */
+                 text-align: center;
+            }
+             .footer-column h3::after { left: 50%; transform: translateX(-50%); }
+             .footer-contact p { justify-content: center; }
+             .footer-links { text-align: center; }
+             .footer-column .social-links { justify-content: center; }
+
+             .lightbox-nav { display: none; } /* Hide nav on small screens */
+             .close-lightbox { right: 10px; top: -35px; font-size: 2rem; }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#home" class="logo"> <!-- Make logo a link to home -->
+                    <!-- === LOGO UPDATED HERE === -->
+                    <img src="logo.jpg" alt="TPHS Logo">
+                    <div class="logo-text">
+                        <h1>Tauheed Public High School</h1>
+                        <p>Inspiring Education for a Brighter Future</p>
+                    </div>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Welcome to Tauheed Public High School</h1>
+                <p>Nurturing young minds with quality education and strong values since 1985 in Karachi.</p>
+                <div class="hero-btns">
+                    <a href="#about" class="btn">Learn More</a>
+                    <a href="#contact" class="btn btn-accent">Admissions Info</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-img founder-section"> <!-- Replaced original content, added class -->
+                    <p class="founder-title">Our Founder</p>
+                    <img src="founder.jpg" alt="Our Founder, Sir Akber Ali Baig" class="founder-photo">
+                    <h4 class="founder-name">Sir Akber Ali Baig</h4>
+                    <!-- Optional: Add a short description/quote if desired -->
+                    <p class="founder-quote">"Visionary leader dedicated to education."</p>
+                </div>
+                
+                <div class="about-text">
+                     <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">About TPHS</h2> <!-- Inline style to override global text-align -->
+                    <p>Established in 1985, Tauheed Public High School (TPHS) has been a cornerstone of educational development in Karachi. Our enduring mission is to cultivate a supportive and stimulating environment that champions academic excellence, instills strong moral and Islamic values, and promotes holistic personal growth.</p>
+                    <p>We are dedicated to an educational philosophy that transcends rote learning, focusing instead on nurturing critical thinking, fostering creativity, and integrating core Islamic principles. Our goal is to empower students with the knowledge, skills, and character necessary to navigate and contribute positively to the modern world.</p>
+                    <div class="highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-users"></i>
+                            <h3>900+</h3>
+                            <p>Active Students</p>
+                        </div>
+                         <div class="highlight-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <h3>40+</h3>
+                            <p>Qualified Staff</p>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-calendar-check"></i>
+                            <h3>35+</h3>
+                            <p>Years of Service</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="section programs" id="programs">
+        <div class="container">
+            <h2 class="section-title">Our Academic Programs</h2>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="monti.jpg" alt="Children playing in Montessori classroom">
+                    </div>
+                    <div class="program-info">
+                        <h3>Montessori (Ages 3-6)</h3>
+                        <p>A nurturing foundation focusing on early childhood development through hands-on, play-based learning and sensory exploration.</p>
+                        <a href="#contact" class="btn">Inquire Now</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="primary.jpg" alt="Students attentively learning in Primary class">
+                    </div>
+                    <div class="program-info">
+                        <h3>Primary (Grade 1-5)</h3>
+                        <p>Building core academic skills in literacy, numeracy, and sciences, following the Sindh Board curriculum with engaging teaching methods.</p>
+                         <a href="#contact" class="btn">Inquire Now</a>
+                    </div>
+                </div>
+                 <div class="program-card">
+                    <div class="program-img">
+                        <img src="secondry.jpg" alt="Secondary students collaborating on a project">
+                    </div>
+                    <div class="program-info">
+                        <h3>Secondary (Grade 6-10)</h3>
+                        <p>Comprehensive secondary education preparing students for Matriculation exams (Sindh Board) with a focus on critical thinking and subject mastery.</p>
+                         <a href="#contact" class="btn">Inquire Now</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Open Quran for Islamic studies">
+                    </div>
+                    <div class="program-info">
+                        <h3>Islamic Education</h3>
+                        <p>Integrated Quranic studies (Nazra & optional Hifz guidance) and comprehensive Islamic teachings to foster strong moral character and values.</p>
+                         <a href="#contact" class="btn">Inquire Now</a>
+                    </div>
+                </div>
+                <!-- Removed Extra-Curricular as a separate card, could be mentioned in About or another section -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">School Life Gallery</h2>
+            <div class="gallery-grid">
+                <!-- Use more relevant alt tags -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Graduation Ceremony at TPHS">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Students collaborating in a TPHS classroom">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="Teacher assisting students with learning">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="Students conducting experiment in science lab">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Students participating in sports activities">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="TPHS School building exterior">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                 <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="School assembly or presentation">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1404&q=80" alt="Close-up of students writing in notebooks">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox">
+        <div class="lightbox-content">
+            <span class="close-lightbox">×</span>
+            <img src="" alt="Enlarged Gallery Image"> <!-- Updated Alt Text -->
+            <div class="lightbox-nav">
+                <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact & Admissions</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>We welcome inquiries about admissions, programs, or any other questions you may have. Reach out to us through the following channels:</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-text">
+                                <h4>Address</h4>
+                                <p>A-29, Sector 8/B, Bilal Colony, Korangi Industrial Area, Karachi, Pakistan</p> <!-- Be specific -->
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <p><a href="tel:+923343872005">+92 334 3872005</a></p> <!-- Include country code -->
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p><a href="mailto:info@tphs.edu.pk">info@tphs.edu.pk</a> (General Inquiries)</p>
+                                <p><a href="mailto:admissions@tphs.edu.pk">admissions@tphs.edu.pk</a> (Admissions)</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div class="contact-text">
+                                <h4>Office Hours</h4>
+                                <p>Monday - Thursday: 8:00 AM - 2:00 PM<br>Friday: 8:00 AM - 12:30 PM<br>Saturday: 9:00 AM - 1:00 PM (Admissions Office)<br>Sunday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Map moved below contact form for better flow on mobile -->
+                     <div class="map-container">
+                         <!-- Using coordinates near Bilal Colony, Korangi - ADJUST AS NEEDED! -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.609611182504!2d67.1399493153809!3d24.808685984078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33b0b98a97f7b%3A0x5b5c4f8e6f5b4e6c!2sBilal%20Colony%2C%20Karachi%2C%20Karachi%20City%2C%20Sindh%2C%20Pakistan!5e0!3m2!1sen!2sus!4v1678886543210!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm" novalidate> <!-- Added novalidate to handle validation via JS -->
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number (Optional)</label>
+                            <input type="tel" id="phone" name="phone" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                        </div>
+                         <!-- Form Message Area -->
+                        <div id="form-message"></div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+                 <!-- Social Links can be here or in footer -->
+                 <div class="contact-info" style="flex-basis: 100%; margin-top: 2rem;"> <!-- Optional: Place social links below form/map -->
+                     <h3>Follow Us</h3>
+                     <div class="social-links">
+                         <!-- === FACEBOOK LINK UPDATED === -->
+                        <a href="https://www.facebook.com/tauheedpublicschool" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About TPHS</h3>
+                    <p>Tauheed Public High School, established 1985 in Karachi, is dedicated to providing quality education integrated with strong moral and Islamic values.</p>
+                    <!-- Footer Social Links -->
+                     <div class="social-links" style="margin-top: 1.5rem;">
+                         <a href="https://www.facebook.com/Tauheedpublichighschool" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#programs">Programs</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact & Admissions</a></li>
+                        <li><a href="#">Privacy Policy</a></li> <!-- Placeholder -->
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Academic Levels</h3>
+                    <ul class="footer-links">
+                        <li><a href="#programs">Montessori (Ages 3-6)</a></li>
+                        <li><a href="#programs">Primary (Grade 1-5)</a></li>
+                        <li><a href="#programs">Secondary (Grade 6-10)</a></li>
+                        <li><a href="#programs">Islamic Education</a></li>
+                         <li><a href="#">Curriculum Overview</a></li><!-- Placeholder -->
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-map-marker-alt"></i> A-29, Sector 8/B, Bilal Colony, Korangi, Karachi</p>
+                        <p><i class="fas fa-phone-alt"></i> +92 334 3872005</p>
+                        <p><i class="fas fa-envelope"></i> info@tphs.edu.pk</p>
+                        <p><i class="fas fa-clock"></i> Mon-Thu: 8AM-2PM<br>Fri: 8AM-12:30PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <script>document.write(new Date().getFullYear())</script> Tauheed Public High School. All Rights Reserved. Designed with <i class="fas fa-heart" style="color: #e0a800;"></i>.</p> <!-- Dynamic Year -->
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const links = document.querySelectorAll('.nav-links li a'); // Target links inside li
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            // Optional: Prevent body scroll when mobile menu is open
+            // document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+        });
+
+        // Close mobile menu when a link is clicked
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    // document.body.style.overflow = 'auto'; // Restore scroll
+                }
+            });
+        });
+
+        // Sticky Header Effect
+        const header = document.getElementById('header');
+        const headerHeight = header.offsetHeight; // Get header height dynamically
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) { // Start effect after scrolling down a bit
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth Scrolling for Internal Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                // Ensure it's an internal link and not just '#'
+                if (href.length > 1 && href.startsWith('#')) {
+                     e.preventDefault();
+                    const targetId = href;
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        // Calculate scroll position considering the potentially changed header height
+                        const currentHeaderHeight = document.getElementById('header').offsetHeight;
+                        const offsetTop = targetElement.offsetTop - currentHeaderHeight - 10; // Add small buffer
+
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+
+                        // Close mobile nav if open after clicking a link
+                        if (navLinks.classList.contains('active')) {
+                            navLinks.classList.remove('active');
+                            hamburger.classList.remove('active');
+                        }
+                    }
+                }
+            });
+        });
+
+        // Gallery Lightbox Functionality
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightbox = document.querySelector('.lightbox');
+        const lightboxImg = document.querySelector('.lightbox-content img');
+        const closeLightbox = document.querySelector('.close-lightbox');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let currentImageIndex = 0;
+        const images = Array.from(galleryItems).map(item => ({
+             src: item.querySelector('img').getAttribute('src'),
+             alt: item.querySelector('img').getAttribute('alt') || 'Gallery Image'
+        }));
+
+        function showLightbox(index) {
+             if (index < 0 || index >= images.length) return; // Boundary check
+            currentImageIndex = index;
+            lightboxImg.setAttribute('src', images[currentImageIndex].src);
+            lightboxImg.setAttribute('alt', images[currentImageIndex].alt);
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scroll
+        }
+
+        function hideLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scroll
+        }
+
+        function showNextImage() {
+            const nextIndex = (currentImageIndex + 1) % images.length;
+            showLightbox(nextIndex);
+        }
+
+        function showPrevImage() {
+            const prevIndex = (currentImageIndex - 1 + images.length) % images.length;
+            showLightbox(prevIndex);
+        }
+
+        // Event Listeners for Lightbox
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => showLightbox(index));
+        });
+
+        closeLightbox.addEventListener('click', hideLightbox);
+        nextBtn.addEventListener('click', (e) => {
+             e.stopPropagation(); // Prevent closing lightbox if clicked on button area
+             showNextImage();
+        });
+        prevBtn.addEventListener('click', (e) => {
+             e.stopPropagation();
+             showPrevImage();
+        });
+
+        // Close lightbox if background is clicked
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                hideLightbox();
+            }
+        });
+
+        // Keyboard navigation for lightbox
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    hideLightbox();
+                } else if (e.key === 'ArrowRight') {
+                    showNextImage();
+                } else if (e.key === 'ArrowLeft') {
+                    showPrevImage();
+                }
+            }
+        });
+
+
+        // Contact Form Handling (Client-Side Validation & Feedback)
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('form-message');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent default form submission
+
+            // Simple validation check
+            let isValid = true;
+            const requiredFields = contactForm.querySelectorAll('[required]');
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    // Optional: Add visual indication for invalid fields
+                    field.style.borderColor = 'var(--error-color)';
+                } else {
+                    field.style.borderColor = 'var(--gray)'; // Reset border color
+                }
+            });
+
+             // Email format check (basic)
+             const emailField = contactForm.querySelector('#email');
+             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+             if (emailField.value.trim() && !emailPattern.test(emailField.value.trim())) {
+                 isValid = false;
+                 emailField.style.borderColor = 'var(--error-color)';
+             }
+
+
+            if (isValid) {
+                // --- Placeholder for actual form submission (e.g., using fetch to send data to a server) ---
+                console.log('Form data is valid. Would send data now.');
+                // Simulate successful submission:
+                formMessage.textContent = 'Thank you for your message! We will get back to you soon.';
+                formMessage.className = 'success'; // Use className to replace all classes
+                contactForm.reset(); // Clear the form
+                 // Reset borders on success
+                 requiredFields.forEach(field => field.style.borderColor = 'var(--gray)');
+                 emailField.style.borderColor = ('var(--gray)');
+
+            } else {
+                formMessage.textContent = 'Please fill in all required fields correctly.';
+                 formMessage.className = 'error';
+            }
+
+            // Make message visible
+            formMessage.style.display = 'block';
+
+             // Optional: Hide message after some time
+            setTimeout(() => {
+                 formMessage.style.display = 'none';
+                 formMessage.textContent = '';
+                 formMessage.className = ''; // Clear classes
+             }, 6000); // Hide after 6 seconds
+        });
+
+        // Optional: Reset border color on input change
+         contactForm.querySelectorAll('.form-control').forEach(input => {
+             input.addEventListener('input', () => {
+                 if (input.style.borderColor === 'var(--error-color)') {
+                     input.style.borderColor = 'var(--gray)';
+                 }
+             });
+         });
+
+
+    </script>
+</body>
+</html>
