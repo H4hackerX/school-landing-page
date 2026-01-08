@@ -1286,34 +1286,20 @@
         <h3>Send Us a Message</h3>
     
         <form id="contactForm">
-            <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" name="name" id="name" class="form-control" required>
-            </div>
-        
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" name="email" id="email" class="form-control" required>
-            </div>
-        
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" name="phone" id="phone" class="form-control">
-            </div>
-        
-            <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" name="subject" id="subject" class="form-control" required>
-            </div>
-        
-            <div class="form-group">
-                <label for="message">Your Message</label>
-                <textarea name="message" id="message" class="form-control" rows="5"></textarea>
-            </div>
-        
-            <div id="form-message"></div>
-            <button type="submit" class="btn">Send Message</button>
-        </form>                
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="tel" name="phone" placeholder="Phone">
+    <input type="text" name="subject" placeholder="Subject" required>
+    <textarea name="message" placeholder="Message"></textarea>
+
+            <p id="form-message"></p>
+            
+    <button type="submit">Send</button>
+                
+</form>
+
+
+
     </div>
 
                  <!-- Social Links can be here or in footer -->
@@ -1587,50 +1573,47 @@
              });
          });
             
+         
             document.addEventListener("DOMContentLoaded", function () {
-            // Initialize EmailJS with your user ID
-            emailjs.init("xfZtZP-7u-Ekpg7gu");
-
-            const contactForm = document.getElementById("contactForm");
-            const formMessage = document.getElementById("form-message");
-            const submitBtn = contactForm.querySelector(".btn");
-
-            contactForm.addEventListener("submit", function (e) {
-                e.preventDefault();
-
-                // Enhanced UI feedback
-                formMessage.innerHTML = "📤 Sending your message...";
-                formMessage.className = "sending show";
-                submitBtn.disabled = true;
-                submitBtn.classList.add("sending");
-                submitBtn.textContent = "";
-
-                // Send the form using EmailJS
-                emailjs.sendForm(
-                    "service_ec1yjze",  // Your EmailJS service ID
-                    "template_mlpkdan", // Your EmailJS template ID
-                    this
-                ).then(
-                    function () {
-                        // Success
-                        formMessage.innerHTML = "✅ Message sent successfully! We'll reply soon.";
-                        formMessage.className = "success show";
-                        contactForm.reset();
-                    },
-                    function (error) {
-                        // Error
-                        formMessage.innerHTML = "❌ Failed to send. Please try again.";
-                        formMessage.className = "error show";
-                        console.error("EmailJS Error:", error);
-                    }
-                ).finally(() => {
-                    // Reset button
-                    submitBtn.disabled = false;
-                    submitBtn.classList.remove("sending");
-                    submitBtn.textContent = "Send Message";
+            
+                // EmailJS init
+                emailjs.init("xfZtZP-7u-Ekpg7gu"); // your public key
+            
+                const form = document.getElementById("contactForm");
+                const msg = document.getElementById("form-message");
+            
+                form.addEventListener("submit", function (e) {
+                    e.preventDefault();
+            
+                    msg.textContent = "Sending...";
+            
+                    // FORM → JavaScript (data object)
+                    const data = {
+                        name: form.name.value,
+                        email: form.email.value,
+                        phone: form.phone.value,
+                        subject: form.subject.value,
+                        message: form.message.value
+                    };
+            
+                    // JavaScript → EmailJS
+                    emailjs.send(
+                        "service_v2ii4qo",     // Service ID
+                        "template_mlpkdan",    // Template ID
+                        data
+                    ).then(
+                        () => {
+                            msg.textContent = "Message sent successfully ✅";
+                            form.reset();
+                        },
+                        (error) => {
+                            msg.textContent = "Failed to send ❌";
+                            console.error(error);
+                        }
+                    );
                 });
             });
-        });
+                
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
@@ -1638,6 +1621,7 @@
 </body>
 
 </html>
+
 
 
 
