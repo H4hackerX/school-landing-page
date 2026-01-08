@@ -1286,7 +1286,7 @@
                 
                     <form id="contactForm" novalidate>
                         <div class="form-group">
-                            <label>Full Name</label>
+                            <label>FullName</label>
                             <input type="text" name="name" id="name" class="form-control" required>
                         </div>
                 
@@ -1585,41 +1585,45 @@
                  }
              });
          });
-
-            (function () {
-                emailjs.init("xfZtZP-7u-Ekpg7gu"); // EmailJS public key
-            })();
             
-            document.getElementById("contactForm").addEventListener("submit", function (e) {
-                e.preventDefault();
+            document.addEventListener("DOMContentLoaded", function () {
             
-                const formMessage = document.getElementById("form-message");
-                formMessage.innerHTML = "Sending...";
-                formMessage.style.color = "#555";
+                emailjs.init("xfZtZP-7u-Ekpg7gu");
             
-                emailjs.sendForm(
-                    "service_ec1yjze",   // service ID
-                    "template_mlpkdan",  // template ID
-                    this
-                ).then(
-                    function () {
-                        formMessage.innerHTML = "✅ Message sent successfully!";
-                        formMessage.style.color = "green";
-                        document.getElementById("contactForm").reset();
-                    },
-                    function (error) {
-                        formMessage.innerHTML = "❌ Failed to send message. Try again.";
-                        formMessage.style.color = "red";
-                        console.error(error);
-                    }
-                );
+                document.getElementById("contactForm").addEventListener("submit", function (e) {
+                    e.preventDefault();
+            
+                    const formMessage = document.getElementById("form-message");
+                    formMessage.innerHTML = "Sending...";
+                    formMessage.style.color = "#555";
+            
+                    emailjs.sendForm(
+                        "service_ec1yjze",
+                        "template_mlpkdan",
+                        this
+                    ).then(
+                        function () {
+                            formMessage.innerHTML = "✅ Message sent successfully!";
+                            formMessage.style.color = "green";
+                            document.getElementById("contactForm").reset();
+                        },
+                        function (error) {
+                            formMessage.innerHTML = "❌ Failed to send message. Try again.";
+                            formMessage.style.color = "red";
+                            console.error("EmailJS Error:", error);
+                        }
+                    );
+                });
+            
             });
+            
     </script>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
 </body>
 
 </html>
+
 
 
 
