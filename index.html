@@ -1282,39 +1282,39 @@
                     </div>
                 </div>
         
-                 <div class="contact-form">
-                    <h3>Send Us a Message</h3>
-                
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" name="name" id="name" class="form-control" required>
-                        </div>
-                    
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" name="email" id="email" class="form-control" required>
-                        </div>
-                    
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" name="phone" id="phone" class="form-control">
-                        </div>
-                    
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" name="subject" id="subject" class="form-control" required>
-                        </div>
-                    
-                        <div class="form-group">
-                            <label for="message">Your Message</label>
-                            <textarea name="message" id="message" class="form-control" rows="5"></textarea>
-                        </div>
-                    
-                        <div id="form-message" style="margin-top: 10px; color: red;"></div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>                
-                </div>
+                <div class="contact-form">
+        <h3>Send Us a Message</h3>
+    
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" name="name" id="name" class="form-control" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" name="email" id="email" class="form-control" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" name="phone" id="phone" class="form-control">
+            </div>
+        
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" name="subject" id="subject" class="form-control" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea name="message" id="message" class="form-control" rows="5"></textarea>
+            </div>
+        
+            <div id="form-message"></div>
+            <button type="submit" class="btn">Send Message</button>
+        </form>                
+    </div>
 
                  <!-- Social Links can be here or in footer -->
                  <div class="contact-info" style="flex-basis: 100%; margin-top: 2rem;"> <!-- Optional: Place social links below form/map -->
@@ -1588,42 +1588,49 @@
          });
             
             document.addEventListener("DOMContentLoaded", function () {
+            // Initialize EmailJS with your user ID
+            emailjs.init("xfZtZP-7u-Ekpg7gu");
 
-    // Initialize EmailJS with your user ID
-    emailjs.init("xfZtZP-7u-Ekpg7gu");
+            const contactForm = document.getElementById("contactForm");
+            const formMessage = document.getElementById("form-message");
+            const submitBtn = contactForm.querySelector(".btn");
 
-    const contactForm = document.getElementById("contactForm");
-    const formMessage = document.getElementById("form-message");
+            contactForm.addEventListener("submit", function (e) {
+                e.preventDefault();
 
-    contactForm.addEventListener("submit", function (e) {
-        e.preventDefault();
+                // Enhanced UI feedback
+                formMessage.innerHTML = "📤 Sending your message...";
+                formMessage.className = "sending show";
+                submitBtn.disabled = true;
+                submitBtn.classList.add("sending");
+                submitBtn.textContent = "";
 
-        // Show sending status
-        formMessage.innerHTML = "Sending...";
-        formMessage.style.color = "#555";
-
-        // Send the form using EmailJS
-        emailjs.sendForm(
-            "service_ec1yjze",  // Your EmailJS service ID
-            "template_mlpkdan", // Your EmailJS template ID
-            this
-        ).then(
-            function () {
-                // Success message
-                formMessage.innerHTML = "✅ Message sent successfully!";
-                formMessage.style.color = "green";
-                contactForm.reset(); // Clear the form
-            },
-            function (error) {
-                // Error message
-                formMessage.innerHTML = "❌ Failed to send message. Please try again.";
-                formMessage.style.color = "red";
-                console.error("EmailJS Error:", error);
-            }
-        );
-    });
-
-});
+                // Send the form using EmailJS
+                emailjs.sendForm(
+                    "service_ec1yjze",  // Your EmailJS service ID
+                    "template_mlpkdan", // Your EmailJS template ID
+                    this
+                ).then(
+                    function () {
+                        // Success
+                        formMessage.innerHTML = "✅ Message sent successfully! We'll reply soon.";
+                        formMessage.className = "success show";
+                        contactForm.reset();
+                    },
+                    function (error) {
+                        // Error
+                        formMessage.innerHTML = "❌ Failed to send. Please try again.";
+                        formMessage.className = "error show";
+                        console.error("EmailJS Error:", error);
+                    }
+                ).finally(() => {
+                    // Reset button
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove("sending");
+                    submitBtn.textContent = "Send Message";
+                });
+            });
+        });
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
@@ -1631,6 +1638,7 @@
 </body>
 
 </html>
+
 
 
 
